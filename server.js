@@ -32,6 +32,7 @@ if(env === 'development'){
     mongoose.connect('mongodb://localhost/meanpluralsight');
 }else{
     mongoose.connect('mongodb://gary114:jordan23@ds062097.mongolab.com:62097/mongo-mean');
+    console.log('Connected to MongoLab');
 }
 
 var db = mongoose.connection;
