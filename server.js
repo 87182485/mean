@@ -45,6 +45,13 @@ app.get('/partials/:partialPath', function(req, res){
     res.render('partials/' + req.params.partialPath);
 });
 
+var messageSchema = mongoose.Schema({message:String});
+var Message = mongoose.model('Message', messageSchema);
+var mongoMessage;
+Message.findOne().exec(function(err, messageDoc){
+    mongoMessage = messageDoc.message;
+});
+
 app.get('*', function(req, res){
     res.render('index', {
         mongoMessage:mongoMessage
@@ -55,10 +62,3 @@ var port = process.env.PORT || 3030;
 
 app.listen(port);
 console.log("Listen to port " + port + " ... ");
-
-var messageSchema = mongoose.Schema({message:String});
-var Message = mongoose.model('Message', messageSchema);
-var mongoMessage;
-Message.findOne().exec(function(err, messageDoc){
-    mongoMessage = messageDoc.message;
-});
