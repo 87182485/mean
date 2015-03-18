@@ -1,0 +1,10 @@
+//
+   Created by Gary on 3/17/2015.
+
+.navbar-right(ng-controller="navLoginCtrl as login")
+    form.navbar-form
+        .form-group
+            input.form-control(placeholder="Email", ng-model="username")
+        .form-group
+            input.form-control(type="password" placeholder="Password", ng-model="password")
+        button.btn.btn-primary(ng-click="login.login(username, password)") Log in

@@ -41,8 +41,8 @@ db.once('open', function callback(){
     console.log('mean db open.');
 });
 
-app.get('/partials/:partialPath', function(req, res){
-    res.render('partials/' + req.params.partialPath);
+app.get('/partials/*', function(req, res){
+    res.render('partials/' + req.params[0]);
 });
 
 //var messageSchema = mongoose.Schema({message:String});
