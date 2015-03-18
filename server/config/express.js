@@ -1,7 +1,7 @@
 var express = require('express'),
     stylus = require('stylus'),
     logger = require('morgan'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser');
 
 
 module.exports = function(app, config){
@@ -17,10 +17,10 @@ module.exports = function(app, config){
 
     app.use(stylus.middleware(
         {
-            src:__dirname+'/public',
+            src:config.rootPath+'/public',
             complie: compile
         }
     ));
 
-    app.use(express.static(__dirname+'/public'));
+    app.use(express.static(config.rootPath+'/public'));
 };
