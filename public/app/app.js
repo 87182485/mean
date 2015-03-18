@@ -6,6 +6,9 @@
 
     angular.module('app', ['ngResource','ngRoute']);
 
+    angular.module('app')
+        .config(config);
+
     config.$inject = ['$locationProvider', '$routeProvider'];
 
     function config($locationProvider, $routeProvider){
@@ -18,17 +21,4 @@
             }
         )
     }
-
-    angular.module('app')
-        .config(config);
-
-    //mainCtrl.$inject = ['$scope'];
-
-    function mainCtrl(){
-        var vm = this;
-        vm.myVar = 'Hello Angular';
-    }
-
-    angular.module('app')
-        .controller('mainCtrl', mainCtrl);
 })();

@@ -1,0 +1,24 @@
+body {
+  padding-top: 61px;
+}
+.navbar .navbar-default {
+  min-height: 75px;
+}
+.navbar-header a.navbar-brand h6 {
+  color: #ccc;
+}
+.navbar-nav li a {
+  min-height: 75px;
+  font-size: 25px;
+  line-height: 40px;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+footer p {
+  border-top: 1px solid #4e5d6c;
+}
+section.content {
+  margin-top: 30px;
+}

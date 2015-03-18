@@ -1,5 +1,14 @@
 //
    Created by Gary on 3/17/2015.
 
-h1 Welcome to Angular
-h2 {{main.myVar}}
+.container
+    .jumbotron
+        h1 Gary's MEAN App
+        p Welcome to Gary's Mean App, this is my first app that created by MEAN stack, keep inspecting my page you will be surprised.
+
+    .row
+        .col-md-6
+            div(ng-include="'/partials/featured-info'")
+        .col-md-6
+            div(ng-include="'/partials/new-info'")
+
