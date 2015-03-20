@@ -2,9 +2,20 @@
    Created by Gary on 3/17/2015.
 
 .navbar-right(ng-controller="navLoginCtrl as login")
-    form.navbar-form
+    form.navbar-form(ng-hide="login.identity.isAuthenticated()")
         .form-group
-            input.form-control(placeholder="Email", ng-model="username")
+            input.form-control(placeholder="Email", ng-model="login.username")
         .form-group
-            input.form-control(type="password" placeholder="Password", ng-model="password")
-        button.btn.btn-primary(ng-click="login.login(username, password)") Log in
+            input.form-control(type="password" placeholder="Password", ng-model="login.password")
+        button.btn.btn-primary(ng-click="login.login(login.username, login.password)") Log in
+    ul.nav.navbar-nav.navbar-right(ng-show="login.identity.isAuthenticated()")
+        li.dropdown
+          a.dropdown-toggle(href="", data-toggle="dropdown")
+           | {{login.identity.currentUser.firstName + " " + login.identity.currentUser.lastName}}
+           b.caret
+          ul.dropdown-menu
+            li(ng-show="login.identity.currentUser.isAdmin()")
+             a(href="/admin/users") User Admin
+            li
+             a(href="" ng-click="login.logout()") Logout
+

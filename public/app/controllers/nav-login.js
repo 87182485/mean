@@ -4,13 +4,31 @@
 (function(){
     'use strict';
 
-    navLoginCtrl.$inject = [];
+    navLoginCtrl.$inject = ['notifier', 'identity', 'auth', '$location'];
 
-    function navLoginCtrl(){
+    function navLoginCtrl(notifier, identity, auth, $location){
         var vm = this;
 
+        vm.identity = identity;
+
         vm.login = function(username, password){
-            console.log('Trying Login...');
+            auth.authenticateUser(username, password).then(function(success){
+                if(success){
+                    vm.username = '';
+                    vm.password = '';
+                    notifier.notify("Login Succeed");
+                }else{
+                    notifier.notify('login failed');
+                }
+            });
+        };
+
+        vm.logout = function(){
+            auth.logout().then(function(){
+                vm.identity.currentUser = undefined;
+                notifier.notify("Logout Succeed");
+                $location.path('/');
+            });
         }
     }
 

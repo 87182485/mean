@@ -12,6 +12,12 @@
     config.$inject = ['$locationProvider', '$routeProvider'];
 
     function config($locationProvider, $routeProvider){
+        var routeRoleCheck = {
+            admin:{auth: ['auth', function(auth){
+                return auth.authorizeCurrentUserForRoute('admin');
+            }]}
+        };
+
         $locationProvider.html5Mode(true);
         $routeProvider.when(
             '/', {
@@ -19,6 +25,26 @@
                 controller: 'mainCtrl',
                 controllerAs: 'main'
             }
+        ).when(
+            '/admin/users', {
+                templateUrl: 'partials/admin/users-list',
+                controller: 'adminUserCtrl',
+                controllerAs: 'adminUser',
+                resolve:routeRoleCheck.admin
+            }
         )
     }
+
+    run.$inject = ['$rootScope', '$location'];
+
+    function run($rootScope, $location){
+        $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection){
+            if(rejection === 'not authorized'){
+                $location.path('/');
+            }
+        });
+    }
+
+    angular.module('app')
+        .run(run);
 })();
