@@ -6,11 +6,13 @@ html
     head
         title Gary's Mean App
         link(href="/favicon.icon", rel="shortcut icon", type="image/x-icon")
-        link(href="/css/bootstrap.css" rel="stylesheet")
+        //link(href="/css/bootstrap.css" rel="stylesheet")
+        link(href="/vendor/font-awesome/css/font-awesome.css")
         link(href="/vendor/toastr/toastr.css" rel="stylesheet")
-        link(href="/css/site.css" rel="stylesheet")
+        link(href="/css/style.css" rel="stylesheet")
         base(href="/")
-    body(ng-app='app')
+        include noscript
+    body(ng-app='app' class="landing")
         include currentUser
         block main-content
         include scripts

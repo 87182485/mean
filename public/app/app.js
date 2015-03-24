@@ -32,6 +32,12 @@
                 controllerAs: 'adminUser',
                 resolve:routeRoleCheck.admin
             }
+        ).when(
+            '/signup', {
+                templateUrl: 'partials/account/signup',
+                controller: 'signupCtrl',
+                controllerAs: 'signup'
+            }
         )
     }
 
